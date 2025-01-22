@@ -1,26 +1,23 @@
-<ion-content>
-  <swiper-container
-  slides-per-view="1"
-  pagination="true"
-  >
-    <swiper-slide class="bg-color-slide">
-      <h1 class="title1">Hola Slide 1</h1>
-      <img src="/assets/images/gatitos-bebes-1.jpg">
-      <ion-icon name="cafe-outline"></ion-icon>
-      <p>Hola soy el slide uno de la libreria swiper</p>
-    </swiper-slide>
-    <swiper-slide>
-      <h1>Hola Slide 2</h1>
-      <img src="https://www.mundogatos.com/Uploads/mundogatos.com/ImagenesGrandes/fotos-de-gatitos-3-0.jpg">
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p>Hola soy el slide dos de la libreria swiper</p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-icon name="close" class="close-icon" (click)="finish()"></ion-icon>
-      <h1>Hola Slide 3</h1>
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p>Hola soy el slide tres de la libreria swiper</p>
-      <ion-button  (click)="finish()">Llevame al home</ion-button>
-    </swiper-slide>
-  </swiper-container>
-</ion-content>
+<swiper-container slides-per-view="1" pagination="true">
+  <swiper-slide class="bg-color-slide">
+    <h1 class="title">Bienvenido a FlowerTaker</h1>
+    <img src="/assets/images/flor1.jpg">
+    <h3>Crecemos juntos, flor a flor 🌼🌱</h3>
+  </swiper-slide>
+  <swiper-slide class="bg-color-slide">
+    <h1 class="title">FlowerTaker</h1>
+    <div class="bloque">
+      <img src="https://i.pinimg.com/736x/ab/a7/ba/aba7ba057a3429e9186c6cdbbfe501e0.jpg">
+      <img src="https://i.pinimg.com/736x/ea/1e/70/ea1e70ecd1238c531e022f9cf42476ac.jpg">
+      <img src="https://i.pinimg.com/736x/40/9c/04/409c0425928ae7fe1ab88d141b70126f.jpg">
+    </div>
+    <h3>Comienza conectando con la naturaleza conociendola</h3>
+  </swiper-slide>
+  <swiper-slide class="bg-color-slide">
+    <ion-icon name="close" class="close-icon" (click)="finish()"></ion-icon>
+    <h1 class="title">Comienza ya! FlowerTaker</h1>
+    <ion-button (click)="finish()" class="button" style="background-color: #929d63;">Login</ion-button>
+    <img width="500" src="https://i.pinimg.com/736x/d0/5e/4b/d05e4b43d2a0d7260e63104ddfc3c71d.jpg">
+    <h3>Venta de plantas, flores, guia y sus cuidados, guarda en favoritos y comparte!!</h3>
+  </swiper-slide>
+</swiper-container>

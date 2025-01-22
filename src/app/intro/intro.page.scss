@@ -1,26 +1,38 @@
 swiper-container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
+
 swiper-slide {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: aqua;
 }
-.title1 {
-  color: red;
+
+.title,
+p,
+h3 {
+  color: #D58C73;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bloque {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .bg-color-slide {
-  background-color: magenta;
+  background-color: #F0E9D4;
 }
 
-.close-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 35px;
-    color: white;
+.button {
+  background-color: #929d63;
+}
+
+.button:hover {
+  background-color: #6b753f;
 }

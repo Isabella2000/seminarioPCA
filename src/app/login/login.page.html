@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="body">
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <p class="form-title">Bienvenido a FlowerTaker</p>
+    <div class="input-container">
+      <input type="email" placeholder="Enter email">
+
+      <ion-input label="Email" labelPlacement="floating" placeholder="example@email.com" formControlName="email"
+        style="background-color: #f7f7f7;"></ion-input>
+    </div>
+    <div>
+      <ng-container *ngFor="let error of formErrors.email">
+        <ion-label color="danger"
+          *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">
+          {{ error.message }}
+        </ion-label>
+      </ng-container>
+    </div>
+
+    <div class="input-container">
+      <input type="password" placeholder="Enter password">
+    </div>
+    <button type="submit" class="submit" disabled="">
+      Ingresar
+    </button>
+
+    <ion-button type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+
+    <!-- <p class="signup-link">
+    No tienes cuenta?
+    <a href="">Registrate</a>
+  </p> -->
+  </form>
+</div>
