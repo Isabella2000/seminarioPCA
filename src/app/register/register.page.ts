@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
   }
 
   registerUser(registerData: any) {
-    console.log(registerData, "Datos del registro")
+    console.log('registerData llego!!!', registerData)
   }
 
 }

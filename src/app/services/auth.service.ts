@@ -8,14 +8,14 @@ export class AuthService {
   constructor() { }
 
   login(credentials: any) {
-    console.log(credentials, "desde el servicio");
+    console.log("llego al servicio!!", credentials);
     return new Promise((accept, reject) => {
       if (
         credentials.email === 'andrea@gmail.com'
       ) {
-        accept('Login correcto');
+        accept('Credenciales correctas');
       } else {
-        reject('Login incorrecto');
+        reject('Credenciales incorrectas');
       }
     });
   }
