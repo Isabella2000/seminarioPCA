@@ -32,7 +32,7 @@
       Ingresar
     </button>
 
-    <ion-button type="submit">Login</ion-button>
+    <ion-button type="submit" [disabled]="!loginForm.valid">Login</ion-button>
 
     <!-- <p class="signup-link">
     No tienes cuenta?
