@@ -56,7 +56,7 @@
   </div>
 </div> -->
 
-<div class="h-screen flex items-center justify-center  bg-[#E3BBBC]">
+<div class="h-screen flex items-center justify-center hi">
   <div class='flex bg-[#F7EFDA] rounded-lg shadow-xl max-w-7xl flex-wrap'>
     <div class="w-full sm:w-full md:w-1/2  lg:w-1/2  xl:w-1/2 p-4 flex justify-center items-center flex-col">
       <!-- <h3 class="text-slate-900  mt-1 text-3xl font-semibold text-center ">Ingrese a <span
@@ -75,22 +75,22 @@
         <ion-input label="Email" labelPlacement="floating" placeholder="example@email.com" formControlName="email"
           style="background-color: #f7f7f7;"></ion-input>
 
-      <ng-container *ngFor="let error of formErrors.email">
-        <ion-label color="danger"
-          *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">
-          {{ error.message }}
-        </ion-label>
-      </ng-container>
+        <ng-container *ngFor="let error of formErrors.email">
+          <ion-label color="danger"
+            *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">
+            {{ error.message }}
+          </ion-label>
+        </ng-container>
 
-      <ion-input label="Contraseña" labelPlacement="floating" placeholder="**********" formControlName="password"
-        type="password" class="bg-emerald-400 border rounded-xl"></ion-input>
+        <ion-input label="Contraseña" labelPlacement="floating" placeholder="**********" formControlName="password"
+          type="password" class="bg-emerald-400 border rounded-xl"></ion-input>
 
-      <div class='recaptcha self-center'>
-        <!-- <ReCAPTCHA ref={captcha} sitekey={import.meta.env.VITE_CAPTCHA_KEY} /> -->
-      </div>
+        <div class='recaptcha self-center'>
+          <!-- <ReCAPTCHA ref={captcha} sitekey={import.meta.env.VITE_CAPTCHA_KEY} /> -->
+        </div>
 
-      <input type="submit" value="Ingresar"
-        class="w-full px-4 py-2 border-2 border-primaryYellow rounded-lg bg-secundaryYellow hover:bg-primaryYellow font-bold" />
+        <input type="submit" value="Ingresar"
+          class="w-full px-4 py-2 border-2 border-primaryYellow rounded-lg bg-secundaryYellow hover:bg-primaryYellow font-bold" />
       </form>
     </div>
     <div class=' rounded-r-lg w-full  md:w-1/2 lg:w-1/2 xl:w-1/2 hidden md:block'>
