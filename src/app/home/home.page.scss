@@ -38,3 +38,10 @@ h3 {
   margin: 0 auto;
   display: block;
 }
+
+ion-fab {
+  ion-fab-button{
+    --background: #f4f4f4;
+    --color: red;
+  }
+}

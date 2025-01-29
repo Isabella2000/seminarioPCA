@@ -21,7 +21,7 @@ export class UserService {
         (error) => {
           console.log(error, 'error');
            if (error.status == 500){
-            reject('Error Porfavor intenta mas tarde');
+            reject('Error, intente mas tarde');
           }else{
             reject('Error al obtener el usuario');
           }
@@ -42,7 +42,7 @@ export class UserService {
         (error) => {
           console.log(error, 'error');
            if (error.status == 500){
-            reject('Error Porfavor intenta mas tarde');
+            reject('Error, intente mas tarde');
           }else{
             reject('Error al actualizar el usuario');
           }

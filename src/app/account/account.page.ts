@@ -25,7 +25,7 @@ export class AccountPage implements OnInit {
 
   async ngOnInit() {
     let user: any = await this.storage.get('user');
-    console.log(user, "usuario");
+    console.log('user', user)
     this.userService.getUser(user.id).then(
       (data: any) => {
         console.log(data);
@@ -39,7 +39,7 @@ export class AccountPage implements OnInit {
   }
 
   async takePhoto() {
-    console.log('Take Photo');
+    console.log('llego a la funcion takePhoto');
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera,
