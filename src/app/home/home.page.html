@@ -1,30 +1,3 @@
-<!-- swiper
-<ion-content>
-  <swiper-container
-  slides-per-view="1"
-  pagination="true"
-  >
-    <swiper-slide class="bg-color-slide">
-      <h1 class="title">Bienvenido a FlowerTaker</h1>
-      <img src="/assets/images/flor1.jpg">
-      <h3>Crecemos juntos, flor a flor 🌼🌱</h3>
-    </swiper-slide>
-    <swiper-slide class="bg-color-slide">
-      <h1 class="title">FlowerTaker</h1>
-      <div class="bloque">
-        <img src="https://i.pinimg.com/736x/ab/a7/ba/aba7ba057a3429e9186c6cdbbfe501e0.jpg">
-        <img src="https://i.pinimg.com/736x/ea/1e/70/ea1e70ecd1238c531e022f9cf42476ac.jpg">
-        <img src="https://i.pinimg.com/736x/40/9c/04/409c0425928ae7fe1ab88d141b70126f.jpg">
-      </div>
-      <h3>Comienza conectando con la naturaleza conociendola</h3>
-    </swiper-slide>
-    <swiper-slide class="bg-color-slide">
-      <h1 class="title">Comienza ya! FlowerTaker</h1>
-      <img width="500" src="https://i.pinimg.com/736x/d0/5e/4b/d05e4b43d2a0d7260e63104ddfc3c71d.jpg">
-      <h3>Venta de plantas, flores, guia y sus cuidados, guarda en favoritos y comparte!!</h3>
-    </swiper-slide>
-  </swiper-container>
-</ion-content> -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -34,26 +7,36 @@
 </ion-header>
 <ion-content>
   <ion-list>
-      <ion-card *ngFor="let post of posts">
-          <img src="{{post.image}}" class="image-post" />
-          <ion-card-header>
-              <ion-card-subtitle>
-                  <ion-avatar class="user-avatar">
-                      <img 
-                      [src]="post.user.image ? post.user.image : 'assets/images/default-avatar.jpeg'"
-                      />
-                  </ion-avatar>
-                  {{post.user.name}}
-              </ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-              {{post.description}}
-          </ion-card-content>
-      </ion-card>
+    <ion-card *ngFor="let post of posts">
+      <img src="{{post.image}}" class="image-post" />
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-avatar class="user-avatar">
+            <img [src]="post.user.image ? post.user.image : 'assets/images/default-avatar.jpeg'" />
+          </ion-avatar>
+          {{post.user.name}}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        {{post.description}}
+      </ion-card-content>
+    </ion-card>
   </ion-list>
+  <ion-infinite-scroll
+  threshold="100px"
+  (ionInfinite)="loadPosts($event)"
+  *ngIf="hasMore"
+>
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Cargando más publicaciones..."
+  >
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addPost()">
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-</ion-fab>
+      <ion-fab-button (click)="addPost()">
+          <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
 </ion-content>
