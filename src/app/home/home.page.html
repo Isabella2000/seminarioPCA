@@ -1,11 +1,13 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
-<ion-content>
+</ion-header> -->
+
+<!-- CARD -->
+<!-- <ion-content>
   <ion-list>
     <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
     <ion-card *ngFor="let post of posts">
@@ -23,21 +25,45 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-  <ion-infinite-scroll
-  threshold="100px"
-  (ionInfinite)="loadPosts($event)"
-  *ngIf="hasMore"
->
-  <ion-infinite-scroll-content
-    loadingSpinner="bubbles"
-    loadingText="Cargando más publicaciones..."
-  >
-  </ion-infinite-scroll-content>
-</ion-infinite-scroll>
+
+  SCROLL INFINITO
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadPosts($event)" *ngIf="hasMore">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más publicaciones...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="addPost()">
-          <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
+    <ion-fab-button (click)="addPost()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
-</ion-content>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+
+      <div class="w-full flex items-center justify-between bg-red-300">
+        <div>
+          <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="w-1/4 my-3">
+        </div>
+        <div class="flex gap-3">
+          <p class="text-blancoHueso font-texto text-base">Intro</p>
+          <p class="text-blancoHueso font-texto text-base">Beneficios</p>
+          <p class="text-blancoHueso font-texto text-base">Productos</p>
+          <p class="text-blancoHueso font-texto text-base">Comentarios</p>
+          <p class="text-blancoHueso font-texto text-base">Contacto</p>
+        </div>
+        <div class="flex gap-3">
+          <lucide-icon name="upload" class="text-blancoHueso"></lucide-icon>
+          <lucide-icon name="user" class="text-blancoHueso"></lucide-icon>
+        </div>
+      </div>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="bg-blancoHueso h-screen flex items-center justify-center text-negro">
+  hp ion header, maldito ionic
+</div>

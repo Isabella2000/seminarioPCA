@@ -21,7 +21,7 @@ export class AddPostModalPage implements OnInit {
     private postService: PostService,
     private storage: Storage,
     private modalController: ModalController
-  ) { 
+  ) {
     this.addPostForm = this.formBuilder.group({
       description: new FormControl('', Validators.required),
       image: new FormControl('', Validators.required)
@@ -31,7 +31,7 @@ export class AddPostModalPage implements OnInit {
   ngOnInit() {
   }
 
-  async uploadPhone(){
+  async uploadPhone() {
     console.log('llego a la funcion uploadPhone');
     const uploadPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
@@ -44,7 +44,7 @@ export class AddPostModalPage implements OnInit {
     });
   }
 
-  async addPost(post_data: any){
+  async addPost(post_data: any) {
     console.log('llego a la funcion addPost con parametro post_data', post_data);
     const user = await this.storage.get('user');
     const post_param = {
@@ -73,5 +73,4 @@ export class AddPostModalPage implements OnInit {
       }
     );
   }
-
 }

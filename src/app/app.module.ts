@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { provideHttpClient } from '@angular/common/http';
+import { LucideAngularModule, User } from 'lucide-angular';
 
 @NgModule({
   declarations: [AppComponent],

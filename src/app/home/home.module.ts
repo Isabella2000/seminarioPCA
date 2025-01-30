@@ -7,13 +7,15 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { LucideAngularModule, Upload, User } from 'lucide-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    LucideAngularModule.pick({ User, Upload })
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
