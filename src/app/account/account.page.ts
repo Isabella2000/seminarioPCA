@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { Storage } from '@ionic/storage-angular';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { AlertController } from '@ionic/angular';
 defineCustomElements(window);
 @Component({
   selector: 'app-account',
@@ -15,17 +16,18 @@ export class AccountPage implements OnInit {
     name: '',
     email: '',
     image: '',
-    followed_users: [],
-    following_users: []
+    followed: [],
+    followers: []
   };
   constructor(
     private userService: UserService,
-    private storage: Storage
+    private storage: Storage,
+    public alertController: AlertController
   ) { }
 
   async ngOnInit() {
     let user: any = await this.storage.get('user');
-    console.log('user', user)
+    console.log(user, "usuario");
     this.userService.getUser(user.id).then(
       (data: any) => {
         console.log(data);
@@ -38,11 +40,11 @@ export class AccountPage implements OnInit {
       });
   }
 
-  async takePhoto() {
-    console.log('llego a la funcion takePhoto');
+  async takePhoto(source: CameraSource) {
+    console.log('Take Photo');
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera,
+      source: source,
       quality: 100
     });
     console.log(capturedPhoto.dataUrl);
@@ -59,6 +61,35 @@ export class AccountPage implements OnInit {
       (error) => {
         console.log(error);
       });
+  }
+
+  async presentPhotoOptions() {
+    const alert = await this.alertController.create({
+      header: "Seleccione una opción",
+      message: "¿De dónde desea obtener la imagen?",
+      buttons:[
+        {
+          text: "Cámara",
+          handler: () => {
+            this.takePhoto(CameraSource.Camera);
+          }
+        },
+        {
+          text: "Galería",
+          handler: () => {
+            this.takePhoto(CameraSource.Photos);
+          }
+        },
+        {
+          text: "Cancelar",
+          role: "cancel",
+          handler: () => {
+            console.log('Cancelado');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

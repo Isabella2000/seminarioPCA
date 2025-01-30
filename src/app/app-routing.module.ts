@@ -6,7 +6,7 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'menu/home',
     pathMatch: 'full'
   },
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule), canActivate: [LoginGuard]
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule), canActivate: [LoginGuard, IntroGuard]
   },
   {
     path: 'add-post-modal',

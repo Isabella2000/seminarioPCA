@@ -1,10 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}", // Asegura que Tailwind escanee los archivos HTML y TypeScript
+    "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        titulo: ['titulo', 'sans-serif'],
+        texto: ["Source", "sans-serif"],
+      },
+      colors: {
+        verde: "#588157",
+        verdeClaro: "#A3B18A",
+        blancoHueso: "#F7EFDA",
+        rosaPalo: "#E3BBBC",
+        rosaSalmon: "#DE8780",
+        marron: "#655D57",
+        negro: "#2F2E2E",
+      },
+    },
   },
   plugins: [],
 };
