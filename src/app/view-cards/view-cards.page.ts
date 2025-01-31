@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { ModalController } from '@ionic/angular';
 import { AddPostModalPage } from '../add-post-modal/add-post-modal.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-cards',
@@ -18,13 +19,18 @@ export class ViewCardsPage {
 
   constructor(
     private postService: PostService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
     this.loadPosts();
+  }
+
+  goToPerfil() {
+    this.router.navigate(['/menu/account']);
   }
 
   async addPost() {

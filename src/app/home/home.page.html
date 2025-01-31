@@ -13,15 +13,16 @@
 
   <nav class="hidden md:flex gap-6">
     <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Beneficios</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Productos</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Comentarios</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Contacto</a>
+    <a class="font-texto text-negro text-xl hover:underline">Beneficios</a>
+    <a class="font-texto text-negro text-xl hover:underline">Productos</a>
+    <a class="font-texto text-negro text-xl hover:underline">Comentarios</a>
+    <a (click)="goToViewCards()" class="font-texto text-negro text-xl hover:underline">Posts</a>
   </nav>
 
   <div class="hidden md:flex gap-4">
-    <lucide-icon name="upload" class="cursor-pointer text-negro"></lucide-icon>
-    <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+    <button (click)="goToPerfil()">
+      <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+    </button>
   </div>
 </header>
 
@@ -35,7 +36,8 @@
         <p class="text-4xl text-negro font-texto pr-10 leading-relaxed">Comienza conectando con la naturaleza
           conociendola.
           Venta de plantas, flores, guia y sus cuidados, guarda en favoritos y comparte!!</p>
-        <button type="submit" class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-2xl text-blancoHueso">INGRESAR</button>
+        <button type="submit"
+          class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-2xl text-blancoHueso">INGRESAR</button>
       </div>
 
       <div class="w-1/2">
@@ -81,49 +83,57 @@
       <h1 class="text-verde font-semibold font-texto text-5xl">Nuestros productos!</h1>
       <div class="grid grid-cols-3 gap-12">
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
-          <img src="../../assets/images/planta1.jpg" width="300" alt="Planta" class="border rounded-xl shadow-lg object-cover mt-6">
+          <img src="../../assets/images/planta1.jpg" width="300" alt="Planta"
+            class="border rounded-xl shadow-lg object-cover mt-6">
           <div class="my-6 flex flex-col gap-3">
             <p class="font-texto font-semibold text-marron text-2xl">Bonsái (Acer tridente)</p>
             <p class="text-xl text-verde font-texto font-semibold">40.000 $</p>
           </div>
         </div>
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
-          <img src="../../assets/images/planta2.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <img src="../../assets/images/planta2.jpg" width="300" alt="Planta"
+            class="border rounded-3xl shadow-lg object-cover mt-6">
           <div class="my-6 flex flex-col gap-3">
             <p class="font-texto font-semibold text-marron text-2xl">Orquidea (Orchidaceae)</p>
             <p class="text-xl text-verde font-texto font-semibold">90.000 $</p>
           </div>
         </div>
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
-          <img src="../../assets/images/planta3.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <img src="../../assets/images/planta3.jpg" width="300" alt="Planta"
+            class="border rounded-3xl shadow-lg object-cover mt-6">
           <div class="my-6 flex flex-col gap-3">
             <p class="font-texto font-semibold text-marron text-2xl">Cerezo (Prunus)</p>
             <p class="text-xl text-verde font-texto font-semibold">190.000 $</p>
           </div>
         </div>
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
-          <img src="../../assets/images/planta4.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <img src="../../assets/images/planta4.jpg" width="300" alt="Planta"
+            class="border rounded-3xl shadow-lg object-cover mt-6">
           <div class="my-6 flex flex-col gap-3">
             <p class="font-texto font-semibold text-marron text-2xl">Tarco (Bignoniaceae)</p>
             <p class="text-xl text-verde font-texto font-semibold">80.000 $</p>
           </div>
         </div>
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
-          <img src="../../assets/images/planta5.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <img src="../../assets/images/planta5.jpg" width="300" alt="Planta"
+            class="border rounded-3xl shadow-lg object-cover mt-6">
           <div class="my-6 flex flex-col gap-3">
             <p class="font-texto font-semibold text-marron text-2xl">Fragaria (ananassa)</p>
             <p class="text-xl text-verde font-texto font-semibold">200.000 $</p>
           </div>
         </div>
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
-          <img src="../../assets/images/planta6.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <img src="../../assets/images/planta6.jpg" width="300" alt="Planta"
+            class="border rounded-3xl shadow-lg object-cover mt-6">
           <div class="my-6 flex flex-col gap-3">
             <p class="font-texto font-semibold text-marron text-2xl">Licuala (Arecaceae)</p>
             <p class="text-xl text-verde font-texto font-semibold">290.000 $</p>
           </div>
         </div>
       </div>
-      <button type="submit" class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-negro font-bold text-2xl text-blancoHueso" (click)="goToViewCards()">VER MAS</button>
+      <button type="submit"
+        class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-negro font-bold text-2xl text-blancoHueso"
+        (click)="goToViewCards()">VER MAS</button>
     </div>
   </div>
 </ion-content>

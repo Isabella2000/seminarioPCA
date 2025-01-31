@@ -5,6 +5,7 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { AlertController, ModalController } from '@ionic/angular';
 import { UpdateAccountModalPage } from '../update-account-modal/update-account-modal.page';
+import { Router } from '@angular/router';
 defineCustomElements(window);
 @Component({
   selector: 'app-account',
@@ -25,7 +26,8 @@ export class AccountPage implements OnInit {
     private userService: UserService,
     private storage: Storage,
     public alertController: AlertController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router,
   ) { }
 
   async ngOnInit() {
@@ -41,6 +43,10 @@ export class AccountPage implements OnInit {
       (error) => {
         console.log(error);
       });
+  }
+
+  goToViewCards() {
+    this.router.navigate(['/view-cards']);
   }
 
   async takePhoto(source: CameraSource) {

@@ -7,24 +7,27 @@
 </ion-header>
 
 <header class="w-full flex items-center justify-between bg-rosaPalo px-4 py-2 shadow-md">
-  <div class="">
-    <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="my-2" width="150">
+  <div (click)="goToPerfil()">
+    <a href="#">
+      <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="my-2" width="150">
+    </a>
   </div>
 
   <nav class="hidden md:flex gap-6">
     <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Beneficios</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Productos</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Comentarios</a>
-    <a href="#" class="font-texto text-negro text-xl hover:underline">Contacto</a>
+    <a class="font-texto text-negro text-xl hover:underline">Beneficios</a>
+    <a class="font-texto text-negro text-xl hover:underline">Productos</a>
+    <a class="font-texto text-negro text-xl hover:underline">Comentarios</a>
+    <a class="font-texto text-negro text-xl hover:underline">Contacto</a>
   </nav>
 
   <div class="hidden md:flex gap-4">
     <button (click)="addPost()">
       <lucide-icon name="upload" class="cursor-pointer text-negro"></lucide-icon>
     </button>
-
-    <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+    <button (click)="goToPerfil()">
+      <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+    </button>
   </div>
 </header>
 
@@ -44,7 +47,7 @@
           <div class="my-6 flex flex-col gap-3">
             <div class="flex">
               <img [src]="post.user.image ? post.user.image : 'assets/images/user-default.png'" alt="User Avatar"
-                width="20" class="border rounded-3xl mr-2"/>
+                width="20" class="border rounded-3xl mr-2" />
               <p class="font-texto font-semibold text-marron text-2xl w-1/2">{{ post.user.name }}</p>
               <button class="ml-auto">
                 <lucide-icon name="heart" class="text-rosaSalmon"></lucide-icon>
@@ -64,7 +67,7 @@
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </div>
-    
+
   </div>
 </ion-content>
 

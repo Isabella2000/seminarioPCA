@@ -28,8 +28,13 @@ export class HomePage {
       this.posts.unshift(newPost);
     })
   }
+ 
   goToViewCards() {
     this.router.navigate(['/view-cards']);
+  }
+ 
+  goToPerfil() {
+    this.router.navigate(['/menu/account']);
   }
 
   async addPost(){

@@ -50,7 +50,7 @@ export class UpdateAccountModalPage implements OnInit {
     this.userService.updateUser(account_data).then((data: any) => {
       if (data.status === 'OK') {
         this.storage.set('user', data.user);
-        this.showToast('Perfil actualizado exitosamente 🎉', 'success');
+        this.showToast('Perfil actualizado con exito!!!', 'success');
 
         setTimeout(() => {
           window.location.reload();
