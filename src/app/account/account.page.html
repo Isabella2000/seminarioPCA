@@ -6,12 +6,54 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>{{user_data.name}} {{user_data.last_name}}</h1>
-  <ion-avatar (click)="presentPhotoOptions()">
-    <img [src]="user_data.image ? user_data.image : 'assets/images/user-default.png'"/>
-  </ion-avatar>
-  <p>usuario: {{user_data.username}}</p>
-  <p>Seguidores: {{user_data.followers.length}}</p>
-  <p>Siguiendo: {{user_data.followed.length}}</p>
+<header class="w-full flex items-center justify-between bg-rosaPalo px-4 py-2 shadow-md">
+  <div class="">
+    <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="my-2" width="150">
+  </div>
+
+  <nav class="hidden md:flex gap-6">
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Beneficios</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Productos</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Comentarios</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Contacto</a>
+  </nav>
+  <div>
+    hi
+  </div>
+</header>
+
+<ion-content class="bg-blancoHueso text-negro">
+  <div class="w-full h-full bg-blancoHueso">
+    <div class="background w-full flex flex-col p-10 justify-center items-center gap-3">
+      <div class="flex flex-col justify-center m-10 gap-6">
+        <p class="text-5xl font-titulo">HI, Bienvenido {{ user_data.name }} {{ user_data.last_name }}</p>
+        <p class="text-3xl font-semibold font-texto text-center">&#64;{{ user_data.username }}</p>
+      </div>
+      <div (click)="presentPhotoOptions()">
+        <img [src]="user_data.image ? user_data.image : 'assets/images/user-default.png'" alt="Foto de perfil"
+          class="border-4 border-blancoHueso rounded-full p-3" width="130" />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-16 w-full items-center justify-center py-20">
+      <div class="flex gap- w-full justify-center">
+        <div class="flex flex-col items-center px-44 gap-5 border-r-4 border-negro">
+          <h3 class="text-3xl text-negro font-semibold font-titulo">{{ user_data.posts?.length ?? 0 }}</h3>
+          <p class="text-xl text-negro font-semibold font-texto">Publicaciones</p>
+        </div>
+        <div class="flex flex-col items-center px-44 gap-5 border-r-4 border-negro">
+          <h3 class="text-3xl text-negro font-semibold font-titulo">{{ user_data.followers?.length ?? 0 }}</h3>
+          <p class="text-xl text-negro font-semibold font-texto">Followers</p>
+        </div>
+        <div class="flex flex-col items-center px-44 gap-5">
+          <h3 class="text-3xl text-negro font-semibold font-titulo">{{ user_data.followees?.length ?? 0}}</h3>
+          <p class="text-xl text-negro font-semibold font-texto">Followed</p>
+        </div>
+      </div>
+      <button type="submit" class="w-1/5 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-negro font-bold text-xl text-blancoHueso" (click)="openModalUpdate()">EDITAR PERFIL</button>
+    </div>
+  
+  </div>
+
 </ion-content>

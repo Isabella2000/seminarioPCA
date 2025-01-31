@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { PostService } from '../../../../FoodSocial/src/app/services/post.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage-angular';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { PostService } from '../services/post.service';
+
 defineCustomElements(window);
+
 @Component({
   selector: 'app-add-post-modal',
   templateUrl: './add-post-modal.page.html',
@@ -13,64 +15,85 @@ defineCustomElements(window);
   standalone: false,
 })
 export class AddPostModalPage implements OnInit {
-  post_image: any;
-  addPostForm: FormGroup;
+  post_image: string | null = null;
+  addPostForm!: FormGroup;
+  isSubmitting = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private postService: PostService,
     private storage: Storage,
-    private modalController: ModalController
-  ) {
-    this.addPostForm = this.formBuilder.group({
-      description: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required)
-    });
-  }
+    private modalController: ModalController,
+    private toastController: ToastController
+  ) { }
 
   ngOnInit() {
-  }
-
-  async uploadPhone() {
-    console.log('llego a la funcion uploadPhone');
-    const uploadPhoto = await Camera.getPhoto({
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Photos,
-      quality: 100
-    });
-    this.post_image = uploadPhoto.dataUrl;
-    this.addPostForm.patchValue({
-      image: this.post_image
+    this.addPostForm = this.formBuilder.group({
+      description: ['', [Validators.required, Validators.minLength(5)]],
+      image: ['', Validators.required]
     });
   }
 
-  async addPost(post_data: any) {
-    console.log('llego a la funcion addPost con parametro post_data', post_data);
-    const user = await this.storage.get('user');
-    const post_param = {
-      post: {
-        description: post_data.description,
-        image: post_data.image,
-        user_id: user.id
+  async uploadPhoto() {
+    try {
+      const photo = await Camera.getPhoto({
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Photos,
+        quality: 100
+      });
+
+      if (photo?.dataUrl) {
+        this.post_image = photo.dataUrl;
+        this.addPostForm.patchValue({ image: this.post_image });
       }
+    } catch (error) {
+      console.error('Error al tomar foto:', error);
+      this.showToast('No se pudo cargar la imagen');
     }
-    console.log('post_param', post_param);
-    this.postService.createPost(post_param).then(
-      (data: any) => {
-        console.log(data, 'post creado');
-        data.user = {
-          id: user.id,
-          name: user.name,
-          image: user.image || 'assets/images/user-default.png'
-        };
-        this.postService.postCreated.emit(data);
-        this.addPostForm.reset();
-        this.post_image = null;
-        this.modalController.dismiss();
-      },
-      (error) => {
-        console.log(error, 'error');
-      }
-    );
+  }
+
+  async addPost() {
+    if (this.addPostForm.invalid) {
+      this.showToast('Completa todos los campos antes de publicar.');
+      return;
+    }
+
+    this.isSubmitting = true;
+
+    try {
+      const user = await this.storage.get('user');
+      if (!user) throw new Error('Usuario no encontrado en el almacenamiento.');
+
+      const post_param = {
+        post: {
+          description: this.addPostForm.value.description,
+          image: this.addPostForm.value.image,
+          user_id: user.id
+        }
+      };
+
+      await this.postService.createPost(post_param);
+      this.showToast('Post creado con exito!!!');
+      this.modalController.dismiss(); 
+    } catch (error) {
+      console.error('Error al crear post:', error);
+      this.showToast('Hubo un error al crear el post.');
+    } finally {
+      this.isSubmitting = false;
+    }
+  }
+
+  closeModal() {
+    this.modalController.dismiss();
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'top',
+      color: 'success'
+    });
+    toast.present();
   }
 }

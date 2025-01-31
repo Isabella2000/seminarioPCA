@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<header class="w-full flex items-center justify-between bg-rosaPalo px-4 py-2 shadow-md">
+  <div class="">
+    <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="my-2" width="150">
+  </div>
+
+  <nav class="hidden md:flex gap-6">
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Beneficios</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Productos</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Comentarios</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Contacto</a>
+  </nav>
+
+  <div class="hidden md:flex gap-4">
+    <button (click)="addPost()">
+      <lucide-icon name="upload" class="cursor-pointer text-negro"></lucide-icon>
+    </button>
+
+    <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+  </div>
+</header>
+
+<!-- BODY -->
+<ion-content class="bg-blancoHueso text-negro">
+  <div class="flex flex-col items-center bg-blancoHueso">
+    <div class="my-32 flex flex-col items-center gap-16">
+      <h1 class="text-verde font-semibold font-texto text-5xl">Posts de nuestros usuarios</h1>
+      <div class="grid grid-cols-5 gap-12 mx-10">
+
+        <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
+
+        <!-- CARD -->
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6 " *ngFor="let post of posts">
+          <img src="{{ post.image }}" class="border rounded-3xl shadow-lg object-cover mt-6" width="300" />
+
+          <div class="my-6 flex flex-col gap-3">
+            <div class="flex">
+              <img [src]="post.user.image ? post.user.image : 'assets/images/user-default.png'" alt="User Avatar"
+                width="20" class="border rounded-3xl mr-2"/>
+              <p class="font-texto font-semibold text-marron text-2xl w-1/2">{{ post.user.name }}</p>
+              <button class="ml-auto">
+                <lucide-icon name="heart" class="text-rosaSalmon"></lucide-icon>
+                <label class="text-rosaSalmon">
+                  {{ post.likes ?? 0 }}
+                </label>
+              </button>
+            </div>
+            <p class="text-lg text-verde font-texto font-semibold truncate w-3/4">{{ truncateText(post.description, 200)
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadPosts($event)" *ngIf="hasMore">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más publicaciones...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+    
+  </div>
+</ion-content>
+
+<!-- Botón flotante para agregar nueva publicación -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addPost()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

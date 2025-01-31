@@ -1,69 +1,129 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header> -->
-
-<!-- CARD -->
-<!-- <ion-content>
-  <ion-list>
-    <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
-    <ion-card *ngFor="let post of posts">
-      <img src="{{post.image}}" class="image-post" />
-      <ion-card-header>
-        <ion-card-subtitle>
-          <ion-avatar class="user-avatar">
-            <img [src]="post.user.image ? post.user.image : 'assets/images/user-default.png'" />
-          </ion-avatar>
-          {{post.user.name}}
-        </ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        {{post.description}}
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
-
-  SCROLL INFINITO
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadPosts($event)" *ngIf="hasMore">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más publicaciones...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addPost()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-</ion-content> -->
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-
-      <div class="w-full flex items-center justify-between bg-red-300">
-        <div>
-          <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="w-1/4 my-3">
-        </div>
-        <div class="flex gap-3">
-          <p class="text-blancoHueso font-texto text-base">Intro</p>
-          <p class="text-blancoHueso font-texto text-base">Beneficios</p>
-          <p class="text-blancoHueso font-texto text-base">Productos</p>
-          <p class="text-blancoHueso font-texto text-base">Comentarios</p>
-          <p class="text-blancoHueso font-texto text-base">Contacto</p>
-        </div>
-        <div class="flex gap-3">
-          <lucide-icon name="upload" class="text-blancoHueso"></lucide-icon>
-          <lucide-icon name="user" class="text-blancoHueso"></lucide-icon>
-        </div>
-      </div>
-
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<div class="bg-blancoHueso h-screen flex items-center justify-center text-negro">
-  hp ion header, maldito ionic
-</div>
+
+<header class="w-full flex items-center justify-between bg-rosaPalo px-4 py-2 shadow-md">
+  <div class="">
+    <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="my-2" width="150">
+  </div>
+
+  <nav class="hidden md:flex gap-6">
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Beneficios</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Productos</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Comentarios</a>
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Contacto</a>
+  </nav>
+
+  <div class="hidden md:flex gap-4">
+    <lucide-icon name="upload" class="cursor-pointer text-negro"></lucide-icon>
+    <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+  </div>
+</header>
+
+<ion-content class="bg-blancoHueso text-negro">
+  <div class="flex flex-col items-center bg-blancoHueso">
+    <div class="flex justify-between items-center w-full py-20">
+      <div class="w-2/3 flex flex-col gap-10 pl-48 pr-24">
+        <h1 class="font-titulo text-negro text-8xl leading-tight">Crecemos juntos, flor a flor
+          <img src="../../assets/images/florIcon.png" class="inline" width="90">
+        </h1>
+        <p class="text-4xl text-negro font-texto pr-10 leading-relaxed">Comienza conectando con la naturaleza
+          conociendola.
+          Venta de plantas, flores, guia y sus cuidados, guarda en favoritos y comparte!!</p>
+        <button type="submit" class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-2xl text-blancoHueso">INGRESAR</button>
+      </div>
+
+      <div class="w-1/2">
+        <swiper-container slides-per-view="1" pagination="true" speed="500" loop="true" navigation="true"
+          autoplay="{ delay: 3000 }">
+          <swiper-slide class="w-full flex justify-center">
+            <div class="w-1/2 drop-shadow-lg">
+              <img src="../../assets/images/flor-swiper2.jpg" class="border rounded-3xl shadow-lg object-cover">
+            </div>
+          </swiper-slide>
+
+          <swiper-slide class="flex justify-center">
+            <img src="../../assets/images/flor-swiper3.jpg" class="border rounded-3xl shadow-lg w-1/2 object-cover">
+          </swiper-slide>
+
+          <swiper-slide class="flex justify-center">
+            <img src="../../assets/images/flor-swiper1.jpg" class="border rounded-3xl shadow-lg w-1/2 object-cover">
+          </swiper-slide>
+        </swiper-container>
+      </div>
+    </div>
+
+    <!-- SECCION VERDE BENEFICIOS -->
+    <div class="bg-verde text-blancoHueso flex flex-col gap-16 w-full items-center py-20">
+      <h1 class="text-5xl font-semibold font-texto">Beneficios de las plantas</h1>
+      <div class="flex gap- w-full justify-center">
+        <div class="flex flex-col items-center px-14 gap-5 border-r-4 border-blancoHueso">
+          <lucide-icon name="brain" size="100" class="font-semibold"></lucide-icon>
+          <p class="text-3xl font-texto">Reduce el estres</p>
+        </div>
+        <div class="flex flex-col items-center px-14 gap-5 border-r-4 border-blancoHueso">
+          <lucide-icon name="sprout" size="100" class="font-semibold"></lucide-icon>
+          <p class="text-3xl font-texto">Ecosistema sostenible</p>
+        </div>
+        <div class="flex flex-col items-center px-14 gap-5">
+          <lucide-icon name="gift" size="100" class="font-semibold"></lucide-icon>
+          <p class="text-3xl font-texto">Regalos perfectos</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-32 flex flex-col items-center gap-16">
+      <h1 class="text-verde font-semibold font-texto text-5xl">Nuestros productos!</h1>
+      <div class="grid grid-cols-3 gap-12">
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
+          <img src="../../assets/images/planta1.jpg" width="300" alt="Planta" class="border rounded-xl shadow-lg object-cover mt-6">
+          <div class="my-6 flex flex-col gap-3">
+            <p class="font-texto font-semibold text-marron text-2xl">Bonsái (Acer tridente)</p>
+            <p class="text-xl text-verde font-texto font-semibold">40.000 $</p>
+          </div>
+        </div>
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
+          <img src="../../assets/images/planta2.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <div class="my-6 flex flex-col gap-3">
+            <p class="font-texto font-semibold text-marron text-2xl">Orquidea (Orchidaceae)</p>
+            <p class="text-xl text-verde font-texto font-semibold">90.000 $</p>
+          </div>
+        </div>
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
+          <img src="../../assets/images/planta3.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <div class="my-6 flex flex-col gap-3">
+            <p class="font-texto font-semibold text-marron text-2xl">Cerezo (Prunus)</p>
+            <p class="text-xl text-verde font-texto font-semibold">190.000 $</p>
+          </div>
+        </div>
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
+          <img src="../../assets/images/planta4.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <div class="my-6 flex flex-col gap-3">
+            <p class="font-texto font-semibold text-marron text-2xl">Tarco (Bignoniaceae)</p>
+            <p class="text-xl text-verde font-texto font-semibold">80.000 $</p>
+          </div>
+        </div>
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
+          <img src="../../assets/images/planta5.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <div class="my-6 flex flex-col gap-3">
+            <p class="font-texto font-semibold text-marron text-2xl">Fragaria (ananassa)</p>
+            <p class="text-xl text-verde font-texto font-semibold">200.000 $</p>
+          </div>
+        </div>
+        <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
+          <img src="../../assets/images/planta6.jpg" width="300" alt="Planta" class="border rounded-3xl shadow-lg object-cover mt-6">
+          <div class="my-6 flex flex-col gap-3">
+            <p class="font-texto font-semibold text-marron text-2xl">Licuala (Arecaceae)</p>
+            <p class="text-xl text-verde font-texto font-semibold">290.000 $</p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-negro font-bold text-2xl text-blancoHueso" (click)="goToViewCards()">VER MAS</button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="bg-blancoHueso h-full pt-10">
+  <form [formGroup]="accountForm" (ngSubmit)="updateAccount(accountForm.value)">
+    <div class="flex px-6 my-4 flex-col gap-4">
+
+      <div class="text-negro text-lg bg-white border rounded-xl px-4 font-texto">
+        <ion-label position="floating"><label class="font-semibold">Nombre</label></ion-label>
+        <ion-input formControlName="name"></ion-input>
+
+        <ion-text color="danger" *ngIf="accountForm.get('name')?.invalid && accountForm.get('name')?.dirty">
+          {{ getErrorMessage('name') }}
+        </ion-text>
+      </div>
+
+      <div class="text-negro text-lg bg-white border rounded-xl px-4 font-texto">
+        <ion-label position="floating"><label class="font-semibold">Apellido</label></ion-label>
+        <ion-input formControlName="last_name"></ion-input>
+
+        <ion-text color="danger" *ngIf="accountForm.get('last_name')?.invalid && accountForm.get('last_name')?.dirty">
+          {{ getErrorMessage('last_name') }}
+        </ion-text>
+      </div>
+
+      <div class="text-negro text-lg bg-white border rounded-xl px-4 font-texto">
+        <ion-label position="floating"><label class="font-semibold">Usuario</label></ion-label>
+        <ion-input formControlName="username"></ion-input>
+
+        <ion-text color="danger" *ngIf="accountForm.get('username')?.invalid && accountForm.get('username')?.dirty">
+          {{ getErrorMessage('username') }}
+        </ion-text>
+      </div>
+
+      <div class="text-negro text-lg bg-white border rounded-xl px-4 font-texto">
+        <ion-label position="floating"><label class="font-semibold">Email</label></ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+
+        <ion-text color="danger" *ngIf="accountForm.get('email')?.invalid && accountForm.get('email')?.dirty">
+          {{ getErrorMessage('email') }}
+        </ion-text>
+      </div>
+
+    </div>
+
+    <div class="w-full flex justify-center items-center">
+      <button type="submit"
+        class="w-1/4 p-3 my-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-base text-blancoHueso">ACTUALIZAR</button>
+    </div>
+
+
+  </form>
+
+</div>

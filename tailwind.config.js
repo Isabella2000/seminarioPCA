@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         titulo: ['titulo', 'sans-serif'],
-        texto: ["Source", "sans-serif"],
+        texto: ["Lato", "sans-serif"],
       },
       colors: {
         verde: "#588157",
