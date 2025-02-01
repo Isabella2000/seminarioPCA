@@ -32,10 +32,8 @@ export class AccountPage implements OnInit {
 
   async ngOnInit() {
     let user: any = await this.storage.get('user');
-    console.log(user, "usuario");
     this.userService.getUser(user.id).then(
       (data: any) => {
-        console.log(data);
         this.storage.set('user', data);
         this.user_data = data;
       }
@@ -49,14 +47,17 @@ export class AccountPage implements OnInit {
     this.router.navigate(['/view-cards']);
   }
 
+
+  goToUsers() {
+    this.router.navigate(['/menu/home/search-users']);
+  }
+
   async takePhoto(source: CameraSource) {
-    console.log('Take Photo');
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       source: source,
       quality: 100
     });
-    console.log(capturedPhoto.dataUrl);
     this.user_data.image = capturedPhoto.dataUrl;
     this.update();
   }

@@ -33,6 +33,10 @@ export class ViewCardsPage {
     this.router.navigate(['/menu/account']);
   }
 
+  goToUsers() {
+    this.router.navigate(['/menu/home/search-users']);
+  }
+
   async addPost() {
     const modal = await this.modalController.create({
       component: AddPostModalPage,

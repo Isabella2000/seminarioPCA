@@ -7,7 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Brain, Gift, LucideAngularModule, Sprout, Upload, User } from 'lucide-angular';
+import { Brain, Gift, LogOut, LucideAngularModule, Sprout, Upload, User } from 'lucide-angular';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { Brain, Gift, LucideAngularModule, Sprout, Upload, User } from 'lucide-a
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    LucideAngularModule.pick({ User, Upload, Brain, Sprout, Gift })
+    LucideAngularModule.pick({ User, Upload, Brain, Sprout, Gift, LogOut })
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

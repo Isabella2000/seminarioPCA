@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SearchUsersPageRoutingModule } from './search-users-routing.module';
 
 import { SearchUsersPage } from './search-users.page';
+import { LucideAngularModule, Search, User } from 'lucide-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchUsersPageRoutingModule
+    SearchUsersPageRoutingModule,
+    LucideAngularModule.pick({ User, Search })
   ],
   declarations: [SearchUsersPage]
 })

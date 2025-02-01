@@ -15,10 +15,8 @@
 
   <nav class="hidden md:flex gap-6">
     <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
-    <a class="font-texto text-negro text-xl hover:underline">Beneficios</a>
-    <a class="font-texto text-negro text-xl hover:underline">Productos</a>
     <a class="font-texto text-negro text-xl hover:underline">Comentarios</a>
-    <a class="font-texto text-negro text-xl hover:underline">Contacto</a>
+    <a (click)="goToUsers()" class="font-texto text-negro text-xl hover:underline">Usuarios</a>
   </nav>
 
   <div class="hidden md:flex gap-4">
@@ -35,8 +33,8 @@
 <ion-content class="bg-blancoHueso text-negro">
   <div class="flex flex-col items-center bg-blancoHueso">
     <div class="my-32 flex flex-col items-center gap-16">
-      <h1 class="text-verde font-semibold font-texto text-5xl">Posts de nuestros usuarios</h1>
-      <div class="grid grid-cols-5 gap-12 mx-10">
+      <h1 class="text-verde font-semibold font-texto text-5xl text-center">Posts de nuestros usuarios</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 px-4 md:px-10">
 
         <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
 
@@ -67,13 +65,10 @@
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </div>
-
   </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addPost()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
-
-<!-- Botón flotante para agregar nueva publicación -->
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="addPost()">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>

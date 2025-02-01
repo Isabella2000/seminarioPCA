@@ -1,58 +1,69 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-users',
   templateUrl: './search-users.page.html',
   styleUrls: ['./search-users.page.scss'],
   standalone: false
 })
-export class SearchUsersPage implements OnInit { 
+export class SearchUsersPage implements OnInit {
   users: any[] = [];
   page: number = 1;
   limit: number = 10;
   query: string = '';
   hasHoreUsers: boolean = true;
   current_user: any;
+  user_data: any = {}
+
   constructor(
     private userService: UserService,
-    private storage: Storage
+    private storage: Storage,
+    private router: Router
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loadUsers();
+    this.user_data = await this.storage.get('user');
   }
 
-  async loadUsers(event?: any){
+
+  goToViewCards() {
+    this.router.navigate(['/view-cards']);
+  }
+
+  goToPerfil() {
+    this.router.navigate(['/menu/account']);
+  }
+
+  async loadUsers(event?: any) {
     this.current_user = await this.storage.get('user');
-    const followingUsers = this.current_user.followed || [];
-    console.log('followingUsers', followingUsers);
+    const followingUers = this.current_user.followees || [];
     this.userService.listUsers(this.page, this.limit, this.query).then(
       (data: any) => {
-        if (data.users.length > 0){
+        if (data.users.length > 0) {
           const updateUsers = data.users.map((user: any) => ({
             ...user,
-            is_following: followingUsers.some((followedUser: any) => followedUser.id == user.id),
+            is_following: followingUers.some((followedUser: any) => followedUser.id == user.id),
           }));
-          this.users = [...this.users, ...updateUsers];
-          console.log('users', this.users);
+          this.users = updateUsers;
           this.page++;
-        }else{
+        } else {
           this.hasHoreUsers = false;
         }
-        if (event){
+        if (event) {
           event.target.complete();
         }
       }
-    ).catch(
-      (error) => {
-        console.log(error);
-        event.target.complete();
-      }
+    ).catch((error: any) => {
+      console.log(error);
+      event.target.complete();
+    }
     );
   }
 
-  searchUsers(event?: any){
+  searchUsers(event?: any) {
     this.query = event.target.value || '';
     this.page = 1;
     this.users = [];
@@ -60,36 +71,40 @@ export class SearchUsersPage implements OnInit {
     this.loadUsers();
   }
 
-  follow(followee_id: any){
-    console.log('follow', followee_id);
+  follow(user_follow_id: any) {
     const user_id = this.current_user.id;
-    this.userService.followUser(user_id, followee_id).then(
-      (data: any) => {
-        console.log(data);
-        this.users = this.users.map((user: any) => {
-          if (user.id == followee_id){
-            return {
-              ...user,
-              is_following: true
-            }
-          }
-          return user;
-        });
-      }
-    ).catch(
-      (error) => {
-        console.log(error);
+    this.userService.followUser(user_id, user_follow_id).then(() => {
+      this.users = this.users.map((user: any) => {
+        if (user.id == user_follow_id) {
+          return { ...user, is_following: true }
+        }
+        return user;
       });
+    }).catch((error: any) => {
+      console.log(error);
+    });
   }
 
-  unfollow(user_id: any){
-    console.log('unfollow', user_id);
+
+  unfollow(unuser_follow_id: any) {
+    const user_id = this.current_user.id;
+    this.userService.unfollowUser(user_id, unuser_follow_id).then(() => {
+      this.users = this.users.map((user: any) => {
+        if (user.id == unuser_follow_id) {
+          return { ...user, is_following: false }
+        }
+
+        return user;
+      });
+    }).catch((error: any) => {
+      console.log(error);
+    });
   }
 
-  toggleFollow(user: any){
-    if (user.is_following){
+  toggleFollow(user: any) {
+    if (user.is_following) {
       this.unfollow(user.id);
-    }else{
+    } else {
       this.follow(user.id);
     }
   }

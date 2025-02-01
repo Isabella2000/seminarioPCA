@@ -75,7 +75,6 @@ export class RegisterPage implements OnInit {
   }
 
   registerUser(registerData: any) {
-    console.log('registerData', registerData)
     if (registerData.password !== registerData.password_confirmation) {
       this.errorMessage = 'No coinciden las contraseñas';
       return;

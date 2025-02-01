@@ -13,75 +13,79 @@
 
   <nav class="hidden md:flex gap-6">
     <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
-    <a class="font-texto text-negro text-xl hover:underline">Beneficios</a>
-    <a class="font-texto text-negro text-xl hover:underline">Productos</a>
-    <a class="font-texto text-negro text-xl hover:underline">Comentarios</a>
     <a (click)="goToViewCards()" class="font-texto text-negro text-xl hover:underline">Posts</a>
+    <a (click)="goToUsers()" class="font-texto text-negro text-xl hover:underline">Usuarios</a>
   </nav>
 
   <div class="hidden md:flex gap-4">
     <button (click)="goToPerfil()">
       <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
     </button>
+    <button (click)="log_out()">
+      <lucide-icon name="log-out"></lucide-icon>
+    </button>
   </div>
 </header>
 
+
 <ion-content class="bg-blancoHueso text-negro">
-  <div class="flex flex-col items-center bg-blancoHueso">
-    <div class="flex justify-between items-center w-full py-20">
-      <div class="w-2/3 flex flex-col gap-10 pl-48 pr-24">
-        <h1 class="font-titulo text-negro text-8xl leading-tight">Crecemos juntos, flor a flor
-          <img src="../../assets/images/florIcon.png" class="inline" width="90">
+  <div class="flex flex-col items-center bg-blancoHueso px-4 md:px-8 lg:px-16">
+    <div class="flex flex-col lg:flex-row justify-between items-center w-full py-10 lg:py-20">
+      <div class="lg:w-2/3 flex flex-col gap-6 lg:gap-10 lg:pl-24">
+        <h1 class="font-titulo text-negro text-4xl md:text-6xl lg:text-8xl leading-tight text-center lg:text-left">
+          Crecemos juntos, flor a flor
+          <img src="../../assets/images/florIcon.png" class="inline" width="70" md:width="80" lg:width="90">
         </h1>
-        <p class="text-4xl text-negro font-texto pr-10 leading-relaxed">Comienza conectando con la naturaleza
-          conociendola.
-          Venta de plantas, flores, guia y sus cuidados, guarda en favoritos y comparte!!</p>
+        <p class="text-xl md:text-3xl lg:text-4xl text-negro font-texto text-center lg:text-left leading-relaxed">
+          Comienza conectando con la naturaleza conociéndola.
+          Venta de plantas, flores, guía y sus cuidados. Guarda en favoritos y comparte!!
+        </p>
         <button type="submit"
-          class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-2xl text-blancoHueso">INGRESAR</button>
+          class="w-2/3 md:w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-lg md:text-2xl text-blancoHueso self-center lg:self-start">
+          INGRESAR
+        </button>
       </div>
 
-      <div class="w-1/2">
+      <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
         <swiper-container slides-per-view="1" pagination="true" speed="500" loop="true" navigation="true"
           autoplay="{ delay: 3000 }">
-          <swiper-slide class="w-full flex justify-center">
-            <div class="w-1/2 drop-shadow-lg">
-              <img src="../../assets/images/flor-swiper2.jpg" class="border rounded-3xl shadow-lg object-cover">
-            </div>
-          </swiper-slide>
-
           <swiper-slide class="flex justify-center">
-            <img src="../../assets/images/flor-swiper3.jpg" class="border rounded-3xl shadow-lg w-1/2 object-cover">
+            <img src="../../assets/images/flor-swiper2.jpg"
+              class="border rounded-3xl shadow-lg w-2/3 md:w-1/2 object-cover">
           </swiper-slide>
-
           <swiper-slide class="flex justify-center">
-            <img src="../../assets/images/flor-swiper1.jpg" class="border rounded-3xl shadow-lg w-1/2 object-cover">
+            <img src="../../assets/images/flor-swiper3.jpg"
+              class="border rounded-3xl shadow-lg w-2/3 md:w-1/2 object-cover">
+          </swiper-slide>
+          <swiper-slide class="flex justify-center">
+            <img src="../../assets/images/flor-swiper1.jpg"
+              class="border rounded-3xl shadow-lg w-2/3 md:w-1/2 object-cover">
           </swiper-slide>
         </swiper-container>
       </div>
     </div>
 
-    <!-- SECCION VERDE BENEFICIOS -->
-    <div class="bg-verde text-blancoHueso flex flex-col gap-16 w-full items-center py-20">
-      <h1 class="text-5xl font-semibold font-texto">Beneficios de las plantas</h1>
-      <div class="flex gap- w-full justify-center">
-        <div class="flex flex-col items-center px-14 gap-5 border-r-4 border-blancoHueso">
-          <lucide-icon name="brain" size="100" class="font-semibold"></lucide-icon>
-          <p class="text-3xl font-texto">Reduce el estres</p>
+    <div class="bg-verde text-blancoHueso flex flex-col gap-10 w-full items-center py-10 md:py-20">
+      <h1 class="text-3xl md:text-5xl font-semibold font-texto text-center">Beneficios de las plantas</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 md:px-8">
+        <div class="flex flex-col items-center gap-5 border-r-0 md:border-r-4 border-blancoHueso">
+          <lucide-icon name="brain" size="80" class="font-semibold"></lucide-icon>
+          <p class="text-2xl md:text-3xl font-texto text-center">Reduce el estrés</p>
         </div>
-        <div class="flex flex-col items-center px-14 gap-5 border-r-4 border-blancoHueso">
-          <lucide-icon name="sprout" size="100" class="font-semibold"></lucide-icon>
-          <p class="text-3xl font-texto">Ecosistema sostenible</p>
+        <div class="flex flex-col items-center gap-5 border-r-0 md:border-r-4 border-blancoHueso">
+          <lucide-icon name="sprout" size="80" class="font-semibold"></lucide-icon>
+          <p class="text-2xl md:text-3xl font-texto text-center">Ecosistema sostenible</p>
         </div>
-        <div class="flex flex-col items-center px-14 gap-5">
-          <lucide-icon name="gift" size="100" class="font-semibold"></lucide-icon>
-          <p class="text-3xl font-texto">Regalos perfectos</p>
+        <div class="flex flex-col items-center gap-5">
+          <lucide-icon name="gift" size="80" class="font-semibold"></lucide-icon>
+          <p class="text-2xl md:text-3xl font-texto text-center">Regalos perfectos</p>
         </div>
       </div>
     </div>
 
-    <div class="my-32 flex flex-col items-center gap-16">
-      <h1 class="text-verde font-semibold font-texto text-5xl">Nuestros productos!</h1>
-      <div class="grid grid-cols-3 gap-12">
+    <div class="my-16 md:my-32 flex flex-col items-center gap-10 md:gap-16">
+      <h1 class="text-verde font-semibold font-texto text-4xl md:text-5xl text-center">Nuestros productos!</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-[#EEEEEE] shadow-xl border-1 rounded-xl px-6">
           <img src="../../assets/images/planta1.jpg" width="300" alt="Planta"
             class="border rounded-xl shadow-lg object-cover mt-6">
@@ -131,9 +135,10 @@
           </div>
         </div>
       </div>
-      <button type="submit"
-        class="w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-negro font-bold text-2xl text-blancoHueso"
-        (click)="goToViewCards()">VER MAS</button>
+      <button type="submit" (click)="goToViewCards()"
+        class="w-2/3 md:w-1/3 p-3 border-2 border-black font-texto rounded-lg bg-negro hover:bg-black font-bold text-lg md:text-2xl text-blancoHueso">
+        VER MÁS
+      </button>
     </div>
   </div>
 </ion-content>

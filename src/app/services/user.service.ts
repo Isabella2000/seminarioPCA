@@ -56,9 +56,9 @@ export class UserService {
     return this.http.get(url).toPromise();
   }
 
-  followUser(user_id: any, followee_id: any){
+  followUser(user_id: any, followee_id	: any){
     const follow_params = {
-      followee_id: followee_id
+      followee_id	
     }
     return new Promise((accept, reject) => {
       this.http.post(`${this.urlServer}/follow/${user_id}`, follow_params, this.httpHeaders).subscribe(
@@ -71,6 +71,23 @@ export class UserService {
             reject('Error, intente mas tarde');
           }else{
             reject('Error al seguir al usuario');
+          }
+        }
+      )
+    });
+  }
+
+  unfollowUser(user_id: any, user_follow_id: any) {
+    const follow_params = { followee_id	: user_follow_id }
+    return new Promise((accept, reject) => {
+      this.http.post(`${this.urlServer}/unfollow/${user_id}`, follow_params, this.httpHeaders).subscribe((data: any) => {
+        accept(data);
+      },
+        (error) => {
+          if (error.status > 499) {
+            reject('INTERNAL SERVER ERROR');
+          } else {
+            reject('Error al actualizar el usuario');
           }
         }
       )

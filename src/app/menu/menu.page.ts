@@ -18,7 +18,7 @@ export class MenuPage implements OnInit {
     },
     {
       title: 'Usuarios',
-      url: '/menu/search-users',
+      url: '/menu/home/search-users',
       icon: 'people-outline'
     }
   ]

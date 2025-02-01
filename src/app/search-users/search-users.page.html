@@ -1,20 +1,21 @@
-<ion-header>
+<!-- <ion-header >
   <ion-toolbar>
     <ion-title>Usuarios</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
+<ion-content >
   <ion-toolbar>
-    <ion-searchbar placeholder="Buscar Usuarios..." (ionInput)="searchUsers($event)"></ion-searchbar>
+    <ion-searchbar
+      placeholder="Buscar Usuarios..."
+      (ionInput)="searchUsers($event)"></ion-searchbar>
   </ion-toolbar>
   <ion-list>
     <ion-item *ngFor="let user of users">
       <ion-avatar slot="start">
-        <img [src]="user.image || 'assets/images/user-default.png' ">
+        <img [src]="user.image || 'assets/img/user-default.png' ">
       </ion-avatar>
       <ion-label>
         <h2>{{ user.name }} {{ user.last_name }}</h2>
@@ -24,4 +25,76 @@
       </ion-button>
     </ion-item>
   </ion-list>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<header class="w-full flex items-center justify-between bg-rosaPalo px-4 py-2 shadow-md">
+  <a href="#">
+    <img src="../../assets/images/logo.png" alt="Logo FlowerBlush" class="my-2" width="150">
+  </a>
+
+  <nav class="hidden md:flex gap-6">
+    <a href="#" class="font-texto text-negro text-xl hover:underline">Intro</a>
+    <a (click)="goToViewCards()" class="font-texto text-negro text-xl hover:underline">Post</a>
+    <!-- <a class="font-texto text-negro text-xl hover:underline">Usuarios</a> -->
+  </nav>
+  <div class="hidden md:flex gap-4">
+    <button (click)="goToPerfil()">
+      <lucide-icon name="user" class="cursor-pointer text-negro"></lucide-icon>
+    </button>
+  </div>
+</header>
+
+<ion-content class="bg-blancoHueso text-negro">
+  <div class="w-full h-full bg-blancoHueso">
+    <div class="background w-full flex flex-col p-10 justify-center items-center gap-3">
+      <div class="flex flex-col justify-center m-10 gap-6">
+        <p class="text-5xl font-titulo">HI, Bienvenido {{ user_data.name }} {{ user_data.last_name }}</p>
+        <p class="text-3xl font-semibold font-texto text-center">&#64;{{ user_data.username }}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-16 w-full items-center justify-center py-20">
+
+      <div class="w-full max-w-lg mx-auto">
+        <ion-toolbar>
+          <ion-searchbar
+            placeholder="Buscar Usuarios..."
+            (ionInput)="searchUsers($event)"></ion-searchbar>
+        </ion-toolbar>
+        <ion-list>
+          <ion-item *ngFor="let user of users">
+            <ion-avatar slot="start">
+              <img [src]="user.image || 'assets/images/user-default.png' ">
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ user.name }} {{ user.last_name }}</h2>
+            </ion-label>
+            <ion-button slot="end" (click)="toggleFollow(user)">
+              <ion-icon [name]="user.is_following ? 'heart-dislike-outline' : 'heart-outline'"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <!-- <div>
+        <div *ngFor="let user of users">
+          <img [src]="user.image || 'assets/images/user-default.png' ">
+          <label for="">{{ user.name }} {{ user.last_name }}</label>
+          <button (click)="toggleFollow(user)">
+            <lucide-icon name="{{ user.is_following ? 'heart' : 'heart-off'}}" class="text-rosaSalmon"></lucide-icon>
+          </button>
+        </div>
+      </div> -->
+
+    </div>
+
+  </div>
 </ion-content>

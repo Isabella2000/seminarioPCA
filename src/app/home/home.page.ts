@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { PostService } from '../services/post.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { AddPostModalPage } from '../add-post-modal/add-post-modal.page';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -18,55 +19,64 @@ export class HomePage {
   constructor(
     private postService: PostService,
     private modalController: ModalController,
-    private router: Router
-  ) {}
+    private router: Router,
+    private navCtrl: NavController,
+    private storage: Storage
+  ) { }
 
-  ngOnInit(){
-    console.log('Init Home');
+  ngOnInit() {
+    ('Init Home');
     this.loadPosts();
-    this.postService.postCreated.subscribe((newPost: any)=>{
+    this.postService.postCreated.subscribe((newPost: any) => {
       this.posts.unshift(newPost);
     })
   }
- 
+
   goToViewCards() {
-    this.router.navigate(['/view-cards']);
+    this.router.navigate(['/menu/view-cards']);
   }
- 
+
   goToPerfil() {
     this.router.navigate(['/menu/account']);
   }
 
-  async addPost(){
-    console.log('Add Post');
+  goToUsers() {
+    this.router.navigate(['/menu/home/search-users']);
+  }
+
+  log_out() {
+    this.storage.remove("user");
+    this.storage.remove("isUserLoggedIn");
+    this.navCtrl.navigateRoot("/login");
+  }
+
+  async addPost() {
     const modal = await this.modalController.create({
       component: AddPostModalPage,
-      componentProps:{}
+      componentProps: {}
     });
     return await modal.present();
   }
 
-  loadPosts(event?: any){
-    console.log('Load Posts');
+  loadPosts(event?: any) {
     this.isLoading = true;
 
     this.postService.getPosts(this.page, this.limit).then(
-      (data: any)=>{
-        if (data.length > 0){
+      (data: any) => {
+        if (data.length > 0) {
           this.posts = [...this.posts, ...data];
           this.page++;
-        }else{
+        } else {
           this.hasMore = false;
         }
         this.isLoading = false;
-        if (event){
+        if (event) {
           event.target.complete();
         }
       },
-      (error)=>{
-        console.log(error);
+      (error) => {
         this.isLoading = false;
-        if (event){
+        if (event) {
           event.target.complete();
         }
       }
